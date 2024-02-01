@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox  # Import messagebox explicitly
 from file_logging import log_user_info
-from info_display import display_info
+from info_display import display_info, APIcallOk
 import re
 from RSignOperations import SendEnvelope, GetTemplateInfo
 import threading
@@ -25,19 +25,17 @@ def handle_submission(name, email, month):
     if is_valid_email(email) and is_valid_name(name) and is_valid_month(month):
         log_user_info(name, email, month)
         display_info(name, email, month)
-        # Run the SendEnvelope in a separate thread to avoid GUI freeze
+        # Run the send_email in a separate thread to avoid GUI freeze
         threading.Thread(target=send_email, args=(email, name)).start()
     else:
         messagebox.showerror("Error", "Invalid submission details")
 
 def send_email(email, name):
     try:
-        # If you need a RoleID, uncomment the next call and set a breakpoint
-        # roles_info = GetTemplateInfo(60592)
-        
         # Call the SendEnvelope function with email and name
         result = SendEnvelope(email, name)
         print(result)
+        APIcallOk(name, email)
         # Handle the result (e.g., update GUI or log)
     except Exception as e:
         print("Error during email sending:", e)

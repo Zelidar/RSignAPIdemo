@@ -81,14 +81,18 @@ def SendEnvelope(email, name):
     # For example:
     # Role ID: 989eae1f-9114-46ea-b694-22787e3a8a02, Role Name: Administrator
     # Role ID: e15f5faa-a6c3-46ff-bb57-dc11276ef5b9, Role Name: Applicant
+    
+    TemplateCode = 60592
+    EmailSubject = "Here is your membership application"
+    RecipientRoleID = "e15f5faa-a6c3-46ff-bb57-dc11276ef5b9"
 
     data = {
-        "TemplateCode": "60592",
-        "Subject": "Here is your membership application",
+        "TemplateCode": TemplateCode,
+        "Subject": EmailSubject,
         "SigningMethod": 0,
         "TemplateRoleRecipientMapping": [
             {
-                "RoleID": "e15f5faa-a6c3-46ff-bb57-dc11276ef5b9",
+                "RoleID": RecipientRoleID,
                 "RecipientEmail": email,
                 "RecipientName": name
             }
