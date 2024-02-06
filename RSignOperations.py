@@ -107,6 +107,65 @@ def SendEnvelope(email, name):
         return f"Failed to send envelope. Status code: {response.status_code}, Response: {response.text}"
 
 
+def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
+    SendEnvelopeFromTemplate = '/api/V1/Envelope/SendDynamicEnvelopeFromTemplate'
+    query = BaseURL + SendEnvelopeFromTemplate
+    headers = {
+        'AuthToken': GetAuthToken(),
+        'Content-Type': 'application/json'  # Add this line
+    }
+    # The TemplateCode and the RoleID can be obtained using respectively
+    # GetTemplateData() and GetTemplateInfo() implemented above.
+    # For example:
+    # Role ID: 989eae1f-9114-46ea-b694-22787e3a8a02, Role Name: Administrator
+    # Role ID: e15f5faa-a6c3-46ff-bb57-dc11276ef5b9, Role Name: Applicant
+    
+    TemplateCode = 12345  # To be updated
+    EmailSubject = "Here is your membership application"
+    RecipientRoleID = "e15f5faa-a6c3-46ff-bb57-dc11276ef5b9"
+
+    data = {
+        "TemplateCode": TemplateCode,
+        "Subject": EmailSubject,
+        "SigningMethod": 0,
+        "TemplateRoleRecipientMapping": [
+            {
+                "RoleID": RecipientRoleID,
+                "RecipientEmail": email,
+                "RecipientName": name
+            }
+        ],
+        "UpdateControls": [
+            {
+            "ControlID": "asdfasdf1", # To be updated
+            "ControlValue": "true",
+            "CustomerNbr": CustomerNbr
+            } 
+        ],
+        "UpdateControls": [
+            {
+            "ControlID": "asdfasdf2", # To be updated
+            "ControlValue": "true",
+            "ContractNbr": ContractNbr
+            } 
+        ],
+        "UpdateControls": [
+            {
+            "ControlID": "asdfasdf2", # To be updated
+            "ControlValue": "true",
+            "CustomerString": CustomerString
+            } 
+        ]
+    }
+
+    response = requests.post(query, headers=headers, data=json.dumps(data))
+
+    if response.status_code == 200:
+        return "The envelope was successfully updated then sent."
+    else:
+        return f"Failed to send dynamic envelope. Status code: {response.status_code}, Response: {response.text}"
+
+
 # Write the formatted JSON string to a text file
 def write_to_file(content, filename):
     with open(filename, 'w') as f:

@@ -21,6 +21,21 @@ class UserInputApp:
         self.email_entry = tk.Entry(self.root)
         self.email_entry.pack()
 
+        # CRM Customer Number Entry
+        tk.Label(self.root, text="CRM Customer Number:").pack()
+        self.CrmCustNbr_entry = tk.Entry(self.root)
+        self.CrmCustNbr_entry.pack()
+
+        # CRM Contract Number Entry
+        tk.Label(self.root, text="CRM Contract Number:").pack()
+        self.CrmContractNbr_entry = tk.Entry(self.root)
+        self.CrmContractNbr_entry.pack()
+
+        # CRM Customer String Entry
+        tk.Label(self.root, text="CRM Customer String:").pack()
+        self.CrmCustString_entry = tk.Entry(self.root)
+        self.CrmCustString_entry.pack()
+
         # Month Dropdown
         tk.Label(self.root, text="Month to begin:").pack()
         self.month_var = tk.StringVar()
@@ -43,10 +58,18 @@ class UserInputApp:
         self.root.bind("<Return>", self.submit)
 
     def submit(self, event=None):
-        handle_submission(self.name_entry.get(), self.email_entry.get(), self.month_var.get())
+        handle_submission(self.name_entry.get(), 
+                          self.email_entry.get(), 
+                          self.CrmCustNbr_entry.get(), 
+                          self.CrmContractNbr_entry.get(), 
+                          self.CrmCustString_entry.get(), 
+                          self.month_var.get())
         self.clear_entries()
 
     def clear_entries(self):
         self.name_entry.delete(0, tk.END)
         self.email_entry.delete(0, tk.END)
+        self.CrmCustNbr_entry.delete(0, tk.END)
+        self.CrmContractNbr_entry.delete(0, tk.END)
+        self.CrmCustString_entry.delete(0, tk.END)
         self.month_combo.set('')
