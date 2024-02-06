@@ -1,6 +1,17 @@
 import tkinter as tk
+import random
+from datetime import datetime
 from tkinter import ttk
 from event_handling import handle_submission
+
+def get_current_datetime():
+    now = datetime.now()
+    return now.strftime("%Y-%B-%d %H:%M:%S")  # Format the date and time
+
+def generate_number():
+    number = random.randint(0, 9999999)  # Generate a random number between 0 and 9999999
+    number *= 2  # Ensure the number is divisible by 2
+    return f'000{number:07}'  # Format the number as a 10-digit string with leading zeros
 
 class UserInputApp:
     def __init__(self, root):
@@ -23,17 +34,20 @@ class UserInputApp:
 
         # CRM Customer Number Entry
         tk.Label(self.root, text="CRM Customer Number:").pack()
-        self.CrmCustNbr_entry = tk.Entry(self.root)
+        self.CrmCustNbr_entry = tk.Entry(self.root, bg='light blue', justify='right')
+        self.CrmCustNbr_entry.insert(0, generate_number())  # Insert the random number
         self.CrmCustNbr_entry.pack()
 
         # CRM Contract Number Entry
         tk.Label(self.root, text="CRM Contract Number:").pack()
-        self.CrmContractNbr_entry = tk.Entry(self.root)
+        self.CrmContractNbr_entry = tk.Entry(self.root, bg='light blue', justify='right')
+        self.CrmContractNbr_entry.insert(0, generate_number())  # Insert the random number
         self.CrmContractNbr_entry.pack()
 
         # CRM Customer String Entry
         tk.Label(self.root, text="CRM Customer String:").pack()
-        self.CrmCustString_entry = tk.Entry(self.root)
+        self.CrmCustString_entry = tk.Entry(self.root, bg='light blue', justify='right')
+        self.CrmCustString_entry.insert(0, get_current_datetime())  # Insert the current date and time
         self.CrmCustString_entry.pack()
 
         # Month Dropdown
