@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox  # Import messagebox explicitly
 from file_logging import log_user_info
-from info_display import display_info, APIcallOk
+from info_display import DisplayInfo
 import re
 from RSignOperations import SendDynEnvelope, GetTemplateInfo
 import threading
@@ -23,8 +23,9 @@ def is_valid_month(month):
 
 def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, month):
     if is_valid_email(email) and is_valid_name(name) and is_valid_month(month):
+        display = DisplayInfo()
+        display.display_info(name, email, month, CustomerNbr, ContractNbr)
         log_user_info(name, email, month)
-        display_info(name, email, month)
         # Run the send_email in a separate thread to avoid GUI freeze
         threading.Thread(target=send_email, args=(email, name, CustomerNbr, ContractNbr, CustomerString,)).start()
     else:
@@ -35,7 +36,7 @@ def send_email(email, name, CustomerNbr, ContractNbr, CustomerString):
         # Call the SendEnvelope function with email and name
         result = SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString)
         print(result)
-        APIcallOk(name, email)
+        DisplayInfo.APIcallOk(name, email)
         # Handle the result (e.g., update GUI or log)
     except Exception as e:
         print("Error during email sending:", e)
