@@ -34,9 +34,10 @@ def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, mon
 def send_email(email, name, CustomerNbr, ContractNbr, CustomerString):
     try:
         # Call the SendEnvelope function with email and name
+        display = DisplayInfo()
         result = SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString)
         print(result)
-        DisplayInfo.APIcallOk(name, email)
+        display.APIcallOk(name, email)
         # Handle the result (e.g., update GUI or log)
     except Exception as e:
         print("Error during email sending:", e)

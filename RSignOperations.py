@@ -78,9 +78,6 @@ def SendEnvelope(email, name):
     }
     # The TemplateCode and the RoleID can be obtained using respectively
     # GetTemplateData() and GetTemplateInfo() implemented above.
-    # For example:
-    # Role ID: 989eae1f-9114-46ea-b694-22787e3a8a02, Role Name: Administrator
-    # Role ID: e15f5faa-a6c3-46ff-bb57-dc11276ef5b9, Role Name: Applicant
     
     TemplateCode = 60592
     EmailSubject = "Here is your membership application"
@@ -114,20 +111,17 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
         'AuthToken': GetAuthToken(),
         'Content-Type': 'application/json'  # Add this line
     }
-    # The TemplateCode and the RoleID can be obtained using respectively
-    # GetTemplateData() and GetTemplateInfo() implemented above.
-    # For example:
-    # Role ID: 989eae1f-9114-46ea-b694-22787e3a8a02, Role Name: Administrator
-    # Role ID: e15f5faa-a6c3-46ff-bb57-dc11276ef5b9, Role Name: Applicant
-    
-    TemplateCode = 12345  # To be updated
-    EmailSubject = "Here is your membership application"
-    RecipientRoleID = "e15f5faa-a6c3-46ff-bb57-dc11276ef5b9"
+    TemplateCode = 60553  # To be updated
+    EmailSubject = "Here is your rental contract (from app)"
+    RecipientRoleID = "35d31d71-cl50-47e6-58f4-ad372el27S8a"
 
     data = {
         "TemplateCode": TemplateCode,
         "Subject": EmailSubject,
+        "PostSigningUrl": "https://itmx.de",
+        "IsSingleSigningURL": "True",
         "SigningMethod": 0,
+        "IsNewSigner": "True",
         "TemplateRoleRecipientMapping": [
             {
                 "RoleID": RecipientRoleID,
@@ -137,23 +131,19 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
         ],
         "UpdateControls": [
             {
-            "ControlID": "asdfasdf1", # To be updated
+            "ControlID": "c0be2528-bb05-4c2b-aca1-ab78feb76f23", # To be updated
             "ControlValue": "true",
-            "CustomerNbr": CustomerNbr
-            } 
-        ],
-        "UpdateControls": [
-            {
-            "ControlID": "asdfasdf2", # To be updated
-            "ControlValue": "true",
-            "ContractNbr": ContractNbr
-            } 
-        ],
-        "UpdateControls": [
-            {
-            "ControlID": "asdfasdf2", # To be updated
-            "ControlValue": "true",
-            "CustomerString": CustomerString
+            "EmailAddress": email
+            # },
+            # {
+            # "ControlID": "6f2d2a80-0cb3-4e9b-ab99-620b8e4d5af7", # To be updated
+            # "ControlValue": "true",
+            # "ContractNbr": ContractNbr
+            # },
+            # {
+            # "ControlID": "a21ec7a9-6eb6-458a-87f0-971a0854e71c", # To be updated
+            # "ControlValue": "true",
+            # "CustomerString": CustomerString
             } 
         ]
     }

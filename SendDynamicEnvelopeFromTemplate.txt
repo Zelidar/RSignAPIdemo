@@ -1,0 +1,41 @@
+SendDynamicEnvelopeFromTemplate
+
+-- request
+{
+    "TemplateCode": "60553",
+    "Subject": "Demonstration Rental Contract",
+    "PostSigningUrl": "https://itmx.de",
+    "IsSingleSigningURL": "True",
+    "SigningMethod": 0,
+    "IsNewSigner": "true",
+    "AppKey": "APISource",
+    "TemplateRoleRecipientMapping": [
+        {
+            "RecipientID": "1",
+            "RecipientEmail": "timgat@gmail.com",
+            "RecipientName": "Timothy Gaton"
+        }
+    ],
+    "UpdateControls": [
+        {
+            "ControlID": "a21ec7a9-6eb6-458a-87f0-971a0854e71c",
+            "ControlValue": "true",
+            "EmailAddress": "myTESTname@myTESTdomain.com"
+        }
+    ]
+}
+
+-- reply
+{
+    "StatusCode": 406,
+    "StatusMessage": "NotAcceptable",
+    "Message": "Either one of the required field is missing.",
+    "EnvelopeId": "00000000-0000-0000-0000-000000000000",
+    "TemplateCode": 60553,
+    "EnvelopeTypeId": "00000000-0000-0000-0000-000000000000",
+    "EnvelopeDetails": null,
+    "EncryptedEnvelopeId": null,
+    "EncryptedTemplateGroupId": null,
+    "EncryptedQueryString": null,
+    "FileReviewTemplateNames": null
+}

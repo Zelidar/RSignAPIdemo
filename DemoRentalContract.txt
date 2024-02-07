@@ -1,0 +1,28 @@
+DemoRentalContract.txt
+
+Template Details
+
+StatusMessage: OK
+Message: Template found
+TemplateCode: 60553	
+UserEmail: zaid.el-hoiydi tc@frama.com
+TemplateName: Rental Contract
+TemplateDescription: Demonstration Rental Contract
+LastModifiedDate: 2024-02-06T08 ;26:00.503	
+Subject: Thank you for choosing "The Rental Company"
+
+Controls (DocumentList)
+ControllD, ControlLabel, ControlValue, ControlName, RoleName
+
+680e65ef-5af7-4f1b-9ccb-18d1fbe66a62, Date & Time Stamp,, dateTimeStampControl, Administrator
+6f2d2a80-0cb3-4e9b-ab99-620b8e4d5af7, CrmContractNbr,, textControl, Administrator
+2a42854f-ab08-46aa-a924-846b35ff2608, Signature,, signControl, Administrator
+a21ec7a9-6eb6-458a-87f0-971a0854e71c, CrmCustString,, textControl, Administrator
+c0be2528-bb05-4c2b-aca1-ab78feb76f23, CrmCustomerNbr,, textControl, Administrator
+52cc5d7e-1adb-4d56-8b98-b960a04f1060, Signature,, signControl, Renter
+583c6472-faf6-437a-a070-eaa22fba7427, Date & Time Stamp,, dateTimeStampControl, Renter
+
+
+Roles (TemplateRole)
+1.	RolelD: 352486dd-d6c4-4efc-b665-3455f3d2dl37, RoleName: Administrator
+2.	RolelD: 35d31d71-cl50-47e6-58f4-ad372el27S8a, RoleName: Renter
