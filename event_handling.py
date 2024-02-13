@@ -34,13 +34,13 @@ def handle_submission(name, email, CustomerNbr, ContractNbr, CustomerString, mon
         messagebox.showerror("Error", "Invalid submission details")
 
 
-from RSignOperations import SendDynEnvelope, GetTemplateInfo, SimCall
+from RSignOperations import SendDynEnvelope
 def send_email(email, name, CustomerNbr, ContractNbr, CustomerString, display_info):
     try:
         # Call the SendEnvelope function with email and name
         display_info.display = DisplayInfo()
-        # result = SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString)
-        result = SimCall("A call to the RSign API was simulated")
+        result = SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString)
+        # result = SimCall("A call to the RSign API was simulated")
         print(result)
         display_info.APIcallOk(name, email)
         # Handle the result (e.g., update GUI or log)

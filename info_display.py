@@ -1,4 +1,5 @@
 import tkinter as tk
+import datetime
 
 class DisplayInfo:
     def __init__(self):
@@ -10,8 +11,9 @@ class DisplayInfo:
         if self.text_widget:
             self.text_widget.config(state=tk.NORMAL)  # Enable editing
 
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             # Insert and style the message
-            callOKmessage = "The envelope was sent to " + name + ", using " + email + "\n"
+            callOKmessage = "[{}] The envelope was sent to {}, using {}\n".format(timestamp, name, email)
             self.text_widget.insert(tk.END, callOKmessage, 'call_OK')
             self.text_widget.see(tk.END)
 

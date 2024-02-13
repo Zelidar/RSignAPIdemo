@@ -110,3 +110,11 @@ Name: Zaid, Email: timgat@gmail.com, Month: January
 Name: Zaid, Email: timgat@gmail.com, Month: January
 Name: Zaid, Email: timgat@gmail.com, Month: January
 Name: Zaid, Email: timgat@gmail.com, Month: January
+Name: Zaid, Email: timgat@gmail.com, Month: January
+Name: Zaid, Email: zaid.el-hoiydi@frama.com, Month: January
+Name: Zaid 2, Email: zaid.el-hoiydi@frama.com, Month: February
+Name: Patrick, Email: tpburke@gmail.com, Month: January
+Name: Eliane, Email: elianebaumann@gmx.ch, Month: February
+Name: Eliane, Email: eliane.baumann@frama.com, Month: January
+Name: Patrick, Email: patrick.burke@frama.com, Month: January
+Name: Zaid, Email: zaid.el-hoiydi@frama.com, Month: January

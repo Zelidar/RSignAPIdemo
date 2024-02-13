@@ -133,14 +133,17 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
         "UpdateControls": [ # To be updated according to the template
             {
             "ControlID": "27ced1eb-2142-4520-bec7-7645be1fc5a5",
+            "IsReadOnly": True,
             "ControlValue": CustomerNbr,
             },
             {
             "ControlID": "5cf8eb4e-fab4-4c9a-80ec-aa5327453a1c",
+            "IsReadOnly": True,
             "ControlValue": ContractNbr,
             },
             {
             "ControlID": "0b813678-1e63-4fd8-970f-1821e0fca1a1",
+            "IsReadOnly": False,
             "ControlValue": CustomerString,
             } 
         ]
