@@ -2,7 +2,7 @@ import os
 import requests
 from myTestCompany import ReferenceKey, EmailId, Password
 
-BaseURL = 'https://api.s1.rsign.io'  # RSign Staging
+BaseURL = 'https://api3.use.rsign.com'  # RSign Sandbox
 AuthenticateIUser = '/api/V1/Authentication/AuthenticateIUser'
 
 def GetAuthToken():
@@ -15,7 +15,8 @@ def GetAuthToken():
         with open(auth_token_file, 'r') as file:
             AuthToken = file.read()
     else:
-        # If file doesn't exist, make API call
+        # If file doesn't exist, make API call to get a new token.
+        print(f"No token file available. Getting a new one ...")
         payload = {'ReferenceKey': ReferenceKey, 'EmailID': EmailId, 'Password': Password}
         query = BaseURL + AuthenticateIUser
         AuthResponse = requests.post(query, data=payload)

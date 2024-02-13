@@ -4,7 +4,7 @@ Template Details
 
 StatusMessage: OK
 Message: Template found
-TemplateCode: 60553	
+TemplateCode: 60593	
 UserEmail: zaid.el-hoiydi tc@frama.com
 TemplateName: Rental Contract
 TemplateDescription: Demonstration Rental Contract

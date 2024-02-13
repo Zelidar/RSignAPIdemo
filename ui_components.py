@@ -14,7 +14,8 @@ def generate_number():
     return f'000{number:07}'  # Format the number as a 10-digit string with leading zeros
 
 class UserInputApp:
-    def __init__(self, root):
+    def __init__(self, root, display_info):
+        self.display_info = display_info
         self.root = root
         self.root.title("Membership Application")
 
@@ -26,11 +27,15 @@ class UserInputApp:
         tk.Label(self.root, text="Enter your name:").pack()
         self.name_entry = tk.Entry(self.root)
         self.name_entry.pack()
+        # Set default choice
+        self.name_entry.insert(0, "Zaid")
 
         # Email Entry
         tk.Label(self.root, text="Enter your email:").pack()
         self.email_entry = tk.Entry(self.root)
         self.email_entry.pack()
+        # Set default choice
+        self.email_entry.insert(0, "timgat@gmail.com")
 
         # CRM Customer Number Entry
         tk.Label(self.root, text="CRM Customer Number:").pack()
@@ -59,6 +64,8 @@ class UserInputApp:
                                                 "August", "September", "October", 
                                                 "November", "December"])
         self.month_combo.pack()
+        # Set default choice
+        self.month_var.set("January")
 
         # Submission Text
         submission_text = "Once you press the submit button, a membership application will be sent to the email you have entered. Please sign it."
@@ -77,13 +84,17 @@ class UserInputApp:
                           self.CrmCustNbr_entry.get(), 
                           self.CrmContractNbr_entry.get(), 
                           self.CrmCustString_entry.get(), 
-                          self.month_var.get())
-        self.clear_entries()
+                          self.month_var.get(),
+                          self.display_info)
+        self.DefaultEntries()
 
-    def clear_entries(self):
-        self.name_entry.delete(0, tk.END)
-        self.email_entry.delete(0, tk.END)
+    def DefaultEntries(self):
+        # self.name_entry.delete(0, tk.END) # Uncomment to delete previous value
+        # self.email_entry.delete(0, tk.END) # Uncomment to delete previous value
         self.CrmCustNbr_entry.delete(0, tk.END)
+        self.CrmCustNbr_entry.insert(0, generate_number())  # Re-insert the random number
         self.CrmContractNbr_entry.delete(0, tk.END)
+        self.CrmContractNbr_entry.insert(0, generate_number())  # Re-insert the random number
         self.CrmCustString_entry.delete(0, tk.END)
-        self.month_combo.set('')
+        self.CrmCustString_entry.insert(0, get_current_datetime())  # Re-insert the current date and time
+        self.month_combo.set('January')

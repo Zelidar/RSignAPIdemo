@@ -40,7 +40,7 @@ class DisplayInfo:
         self.user_entries.append(f"Name: {name}, Month: {month}, Email: {email}, CrmCustNbr: {CrmCustNbr}, CrmContractNbr: {CrmContractNbr}")
 
         # Create the window if it does not exist
-        if not self.info_window or not tk.Toplevel.winfo_exists(self.info_window):
+        if not self.info_window or not self.info_window.winfo_exists():
             self.info_window = tk.Toplevel()
             self.info_window.title("Operation Log")
             self.info_window.geometry("500x200")  # Set initial size

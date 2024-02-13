@@ -1,11 +1,13 @@
 # Setting the environment to connecto to RSign
 import json
 import requests
-
 # Fetching my RPost test credentials
-from GettingRSignAuthToken import GetAuthToken
-from GettingRSignAuthToken import BaseURL
+from GettingRSignAuthToken import GetAuthToken, BaseURL
 
+import time
+def SimCall(SimCallNumber):
+    time.sleep(5)
+    return SimCallNumber
 
 def GetTemplateData():
     GetTemplateRuleList = '/api/V1/Template/GetTemplateRuleList'
@@ -109,11 +111,11 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
     query = BaseURL + SendEnvelopeFromTemplate
     headers = {
         'AuthToken': GetAuthToken(),
-        'Content-Type': 'application/json'  # Add this line
+        'Content-Type': 'application/json'
     }
-    TemplateCode = 60553  # To be updated
+    TemplateCode = 62651  # To be updated
     EmailSubject = "Here is your rental contract (from app)"
-    RecipientRoleID = "35d31d71-cl50-47e6-58f4-ad372el27S8a"
+    RecipientRoleID = "5d52c9a7-a310-4914-bb21-31573728c978"
 
     data = {
         "TemplateCode": TemplateCode,
@@ -121,29 +123,25 @@ def SendDynEnvelope(email, name, CustomerNbr, ContractNbr, CustomerString):
         "PostSigningUrl": "https://itmx.de",
         "IsSingleSigningURL": "True",
         "SigningMethod": 0,
-        "IsNewSigner": "True",
         "TemplateRoleRecipientMapping": [
             {
-                "RoleID": RecipientRoleID,
+                "RecipientID": RecipientRoleID,
                 "RecipientEmail": email,
                 "RecipientName": name
             }
         ],
-        "UpdateControls": [
+        "UpdateControls": [ # To be updated according to the template
             {
-            "ControlID": "c0be2528-bb05-4c2b-aca1-ab78feb76f23", # To be updated
-            "ControlValue": "true",
-            "EmailAddress": email
-            # },
-            # {
-            # "ControlID": "6f2d2a80-0cb3-4e9b-ab99-620b8e4d5af7", # To be updated
-            # "ControlValue": "true",
-            # "ContractNbr": ContractNbr
-            # },
-            # {
-            # "ControlID": "a21ec7a9-6eb6-458a-87f0-971a0854e71c", # To be updated
-            # "ControlValue": "true",
-            # "CustomerString": CustomerString
+            "ControlID": "27ced1eb-2142-4520-bec7-7645be1fc5a5",
+            "ControlValue": CustomerNbr,
+            },
+            {
+            "ControlID": "5cf8eb4e-fab4-4c9a-80ec-aa5327453a1c",
+            "ControlValue": ContractNbr,
+            },
+            {
+            "ControlID": "0b813678-1e63-4fd8-970f-1821e0fca1a1",
+            "ControlValue": CustomerString,
             } 
         ]
     }
